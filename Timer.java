@@ -1,9 +1,8 @@
 package com.example.atharva.pomodoro;
 
 import java.util.Locale;
-import java.util.StringTokenizer;
-
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
@@ -68,12 +66,14 @@ public class Timer extends AppCompatActivity {
         /*
         Start the timer from 25:00 and on finish play notification and delete activity
          */
-        final int MILISECONDS = 150000;
+        final int MILISECONDS = 15000;
         final EditText timerText = (EditText) findViewById(R.id.timerText);
+
         new CountDownTimer(MILISECONDS, 1000){
             public void onTick(long milisec){
                 timerText.setText(inFormat(milisec));
             }
+
             public void onFinish(){
                 try{
                     Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -87,6 +87,7 @@ public class Timer extends AppCompatActivity {
         }.start();
 
     }
+
 
     public String inFormat(long mil){
         /*
