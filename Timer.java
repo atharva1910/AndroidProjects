@@ -15,7 +15,7 @@ public class Timer extends abstarctTimer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
-        createTimer(15000);
+        createTimer(1500000);
         setStopButton();
     }
 
