@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.Locale;
@@ -15,29 +17,23 @@ import java.util.Locale;
  * Created by atharva on 21/06/17 for Pomodoro
  */
 
-abstract class abstarctTimer extends AppCompatActivity{
+abstract class abstarctTimer extends AppCompatActivity implements DialogInterface.OnClickListener{
 
     public void confirmExit(){
         /*
         When user presses the stopButton, create a confirmation dialog box
          */
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-
-        alertDialog.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
-            }
-        });
-        alertDialog.setNegativeButton("No!", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
+        alertDialog.setPositiveButton("Yes!",this);
+        alertDialog.setNegativeButton("No!", this);
         AlertDialog alert = alertDialog.create();
         alert.setTitle("Are you sure?");
         alert.show();
+    }
+
+    @Override
+    public void onClick(DialogInterface dialogInterface, int which){
+
     }
 
     public void createTimer(final int miliseconds){
@@ -56,6 +52,7 @@ abstract class abstarctTimer extends AppCompatActivity{
                     Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
                     Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
                     r.play();
+                    afterRingtone();
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -74,4 +71,20 @@ abstract class abstarctTimer extends AppCompatActivity{
                 minutes,seconds));
     }
 
+    public void afterRingtone(){
+
+    }
+
+    public void setStopButton() {
+        /*
+        Find the stop Button and set OnClickListener
+         */
+        Button stopTimer = (Button) findViewById(R.id.stopButton);
+        stopTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmExit();
+            }
+        });
+    }
 }
