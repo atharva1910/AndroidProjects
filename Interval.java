@@ -17,7 +17,7 @@ public class Interval extends abstarctTimer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interval);
-        createTimer(3000);
+        createTimer(300000);
         setStopButton();
     }
 
