@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Day4</string>
+    <string name="add">+</string>
+    <string name="sub">-</string>
+    <string name="mul">*</string>
+    <string name="div">/</string>
+    <string name="cal">=</string>
+</resources>
