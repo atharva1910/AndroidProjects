@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Day7</string>
+    <string name="btn_title">Animate me</string>
+    <string name="title_activity_animate">Animate</string>
+</resources>
