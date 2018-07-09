@@ -1,6 +1,7 @@
 package com.example.qwn.day6;
 
 import android.content.IntentFilter;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,16 +10,20 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ConstraintLayout constraintLayout;
     private long number_1 = 0;
     private long number_2 = 0;
     StringBuilder stringBuilder = new StringBuilder();
     private String operator = "";
     private String log_tag = "Main Activity";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d(log_tag, findViewById(R.id.main_activity).getClass().toString());
+        constraintLayout = findViewById(R.id.main_activity);
         //Display(Long.toString(number_1;
     }
 
