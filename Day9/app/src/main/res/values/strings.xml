@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Day9</string>
+    <string name="email_field">Enter email</string>
+    <string name="name_field">Enter name</string>
+    <string name="phone_field">Enter phone number</string>
+    <string name="address_field">Enter address</string>
+    <string name="button_field">Post</string>
+    <string name="form_title">Enter user details</string>
+    <string name="title_activity_post_form">PostForm</string>
+</resources>
