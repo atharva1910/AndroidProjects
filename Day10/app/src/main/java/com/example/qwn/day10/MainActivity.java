@@ -7,25 +7,49 @@ import android.os.Bundle;
 import android.transition.TransitionManager;
 import android.view.View;
 import android.util.Log;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout main_layout;
     private ConstraintSet constraintSet = new ConstraintSet();
-    //private String log_tag = "TimerStart";
+    Switch timer_toggle;
+    TransitionManager transitionManager = new TransitionManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        main_layout = findViewById(R.id.main_layout);
-        constraintSet.clone(this, R.layout.layout);
+        timer_toggle = findViewById(R.id.timerToggle);
+        timer_toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    Log.d("On switch", "Switch is on");
+                    TimerStart();
+                }else{
+                    Log.d("On switch", "Switch is off");
+                    TimerStop();
+                }
+            }
+        });
     }
 
-    public void TimerStart(View v)
+    public void TimerStart()
     {
         Log.d("TimerStart", "Read click");
-        TransitionManager transitionManager = new TransitionManager();
+        ConstraintLayout main_layout = findViewById(R.id.main_layout);
+        constraintSet.clone(this, R.layout.layout);
+        transitionManager.beginDelayedTransition(main_layout);
+        constraintSet.applyTo(main_layout);
+    }
+
+     public void TimerStop()
+    {
+        Log.d("TimerStop", "Read click");
+        ConstraintLayout main_layout = findViewById(R.id.timer_layout);
+        constraintSet.clone(this, R.layout.activity_main);
         transitionManager.beginDelayedTransition(main_layout);
         constraintSet.applyTo(main_layout);
     }
