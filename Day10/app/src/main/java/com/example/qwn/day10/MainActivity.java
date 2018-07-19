@@ -12,16 +12,17 @@ import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ConstraintLayout main_layout;
     private ConstraintSet constraintSet = new ConstraintSet();
-    Switch timer_toggle;
     TransitionManager transitionManager = new TransitionManager();
+    Switch timer_toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         timer_toggle = findViewById(R.id.timerToggle);
+        timer_toggle.setTextOn("Start timer");
+        timer_toggle.setTextOff("Stop timer");
         timer_toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
